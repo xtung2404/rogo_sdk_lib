@@ -1,0 +1,5 @@
+jdk:
+  - openjdk17
+install:
+  # Chạy lệnh build đích danh module rogosdk-lib
+  - ./gradlew :rogosdk-lib:publishToMavenLocal -Pgroup=com.github.xtung2404 -Pversion=$JITPACK_VERSION

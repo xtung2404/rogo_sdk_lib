@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Copy từ manifest của raio_sdk AAR: chỉ classes.jar được nhúng nên phải khai báo lại ở đây -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application>
+        <provider
+            android:name="com.example.ro_sdk.observer.RoSdkInitializer"
+            android:authorities="${applicationId}.rogosdk-initializer"
+            android:exported="false"
+            android:multiprocess="false" />
+    </application>
+
+</manifest>
