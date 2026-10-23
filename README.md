@@ -5,12 +5,21 @@ Bản SDK nằm trong `rogosdk-lib/libs/`, cập nhật bằng lệnh `/build-sd
 
 ## SDK đang đóng gói
 - File: `raio-android-sdk-261023-release.aar` — build ngày 23/10/2026
-- Build từ commit: `515114c` (nhánh `main`), kèm thay đổi chưa commit: `ro_sdk/build.gradle.kts`,
+- Build từ commit: `ad13d3f` (nhánh `main`), kèm thay đổi chưa commit: `ro_sdk/build.gradle.kts`,
   `api/sync/CloudSyncDevice.java`, `base/RoSDKHandler.java`, `impl/DeviceHandlerImpl.java`, `impl/RoSdkHandlerImpl.java`,
   xoá `libs/rogobase.jar`, `libs/rogobaseandroid-release.aar`, `libs/rogobaseapp.jar`
-- Tag phát hành: `1.0.1` — `implementation("com.github.xtung2404:rogo_sdk_lib:1.0.1")`
+- Tag phát hành: `1.0.2` — `implementation("com.github.xtung2404:rogo_sdk_lib:1.0.2")`
 
 ## Lịch sử thay đổi
+
+### 1.0.2 (261023) — so với 1.0.1
+- **Hàm thêm** (`LocationHandler`, toạ độ / pin bản đồ cho location):
+  - `createLocation(String label, String desc, Double latitude, Double longitude, ...)`: tạo location kèm toạ độ
+    (truyền vĩ độ, kinh độ; SDK tự đổi sang [kinh độ, vĩ độ] khi gửi lên server). Cả hai `null` thì tạo không kèm toạ độ
+  - `setLocationCoordinate(String locationId, double latitude, double longitude, ...)`: đặt hoặc dời pin, không đổi tên / mô tả
+  - `clearLocationCoordinate(String locationId, ...)`: xoá pin khỏi bản đồ
+- **Class thêm**: `api/link/location` (`APIUpdateLocationCoordinate`)
+- **Commit**: `ad13d3f` Add optional location coordinate (map pin) support
 
 ### 1.0.1 (261023) — so với 1.0.0
 - **Hàm thêm**:
