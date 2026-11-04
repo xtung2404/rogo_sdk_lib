@@ -38,7 +38,7 @@ android {
 // Manifest của AAR (permission + RoSdkInitializer) đã được copy sang src/main/AndroidManifest.xml.
 val extractedAarDir = layout.buildDirectory.dir("intermediates/extracted_aar_jar")
 val extractAarJarTask = tasks.register<Copy>("extractAarJar") {
-    val aarFile = file("libs/raio-android-sdk-261023-release.aar")
+    val aarFile = file("libs/raio-android-sdk-261104-release.aar")
     if (aarFile.exists()) {
         from(zipTree(aarFile))
         include("classes.jar")
@@ -58,10 +58,8 @@ dependencies {
 
     // Các dependency mà raio_sdk dùng (lấy từ Raio-Android-SDK/ro_sdk/build.gradle.kts),
     // khai báo ở đây để chúng đi vào POM, app consume không phải tự thêm.
-    api(libs.rogocore.lib)
+    api(libs.iotcore.android)
     api(libs.gson)
-    // RogoCoreLib không khai báo hivemq trong POM
-    api(libs.hivemq.mqtt.client)
     implementation(libs.room.runtime)
     implementation(libs.lifecycle.common.java8)
     implementation(libs.lifecycle.process)
