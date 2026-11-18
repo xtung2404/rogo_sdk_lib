@@ -4,14 +4,27 @@
 Bản SDK nằm trong `rogosdk-lib/libs/`, cập nhật bằng lệnh `/build-sdk` của Raio-Android-SDK.
 
 ## SDK đang đóng gói
-- File: `raio-android-sdk-261104-release.aar` — build ngày 04/11/2026
-- Build từ commit: `3592eb7` (nhánh `main`), kèm thay đổi chưa commit: `ro_sdk/build.gradle.kts`,
-  `app/callback/IoTDeviceReportCallback.java`, `base/DeviceHandler.java`, `base/StateHandler.java`,
-  `impl/DeviceHandlerImpl.java`, `impl/StateHandlerImpl.java`, `service/RoSdkService.java`
-- Core: `com.github.RogoSolutions:IotCoreAndroid:1.0.3.47`
-- Tag phát hành: `1.0.3` — `implementation("com.github.xtung2404:rogo_sdk_lib:1.0.3")`
+- File: `raio-android-sdk-261118-release.aar` — build ngày 18/11/2026
+- Build từ commit: `eab3acf` (nhánh `main`), kèm thay đổi chưa commit: `ro_sdk/impl/ConfigWileDeviceHandlerImpl.java`
+- Core: `com.github.RogoSolutions:IotCoreAndroid:1.0.3.50`
+- Tag phát hành: `1.0.4` — `implementation("com.github.xtung2404:rogo_sdk_lib:1.0.4")`
 
 ## Lịch sử thay đổi
+
+### 1.0.4 (261118) — so với 1.0.3
+- **Core**: `IotCoreAndroid` 1.0.3.47 → 1.0.3.50
+- **Hàm thêm**: `RoSDKHandler.kangarooServiceHandler()` và handler mới `KangarooServiceHandler` (43 hàm: lọc cartridge khi quét,
+  máy cũ, hồ sơ, thiết bị, lịch sử cartridge, đặt lịch, gói dịch vụ, thông báo, shop)
+- **Hàm xoá**: `DeviceHandler.verifyFilterCartridge`, `DeviceHandler.activateFilterCartridge` (chuyển sang `KangarooServiceHandler`)
+- **Class (đổi package, ảnh hưởng code gọi SDK)**: các model `app/IoT*` chuyển sang gói con — `app/device` (`IoTDevice`,
+  `IoTDiscoveredDevice`, `IoTProductModel`), `app/firmware`, `app/group`, `app/location`, `app/state` (`IoTDeviceState`,
+  `IoTOnlineStatus`); thêm `app/kangaroo/*` (~35 model); `CloudSyncPresence` → `CloudSyncOnlineStatus`, bỏ `CloudSyncCartridge`,
+  thêm `api/sync/kangaroo_service/*`
+- **Hành vi**: `ConfigWileDeviceHandler.syncDeviceToCloud` — trước khi lưu thiết bị mới vào local DB, nếu đã có thiết bị cùng MAC
+  thì xoá thiết bị cũ trong local DB (chưa xoá trên cloud)
+- **Commit**: `eab3acf` Kangaroo app-api (profile, devices, cartridge history, bookings, plans, notifications, shop); `288fb0e` chuyển
+  model vào gói con; `f6c58e9` KangarooServiceHandler; `e8ccd39` Core 1.0.3.50, verify OTP đăng ký qua `otpRequestVerifyCode`;
+  `bb8f30b` Core 1.0.3.47
 
 ### 1.0.3 (261104) — so với 1.0.2
 - **Core**: đổi sang `com.github.RogoSolutions:IotCoreAndroid:1.0.3.47` (trước là `com.github.xtung2404:RogoCoreLib:1.0.3.38`);
