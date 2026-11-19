@@ -4,12 +4,19 @@
 Bản SDK nằm trong `rogosdk-lib/libs/`, cập nhật bằng lệnh `/build-sdk` của Raio-Android-SDK.
 
 ## SDK đang đóng gói
-- File: `raio-android-sdk-261118-release.aar` — build ngày 18/11/2026
-- Build từ commit: `eab3acf` (nhánh `main`), kèm thay đổi chưa commit: `ro_sdk/impl/ConfigWileDeviceHandlerImpl.java`
-- Core: `com.github.RogoSolutions:IotCoreAndroid:1.0.3.50`
-- Tag phát hành: `1.0.4` — `implementation("com.github.xtung2404:rogo_sdk_lib:1.0.4")`
+- File: `raio-android-sdk-261119-release.aar` — build ngày 19/11/2026
+- Build từ commit: `99c9520` (nhánh `main`), kèm thay đổi chưa commit: `ro_sdk/build.gradle.kts`, `ro_sdk/src/main/java/com/example/ro_sdk/impl/RoSdkHandlerImpl.java`, `docs/SDK_CORE.md`
+- Core: `com.github.RogoSolutions:IotCoreAndroid:1.0.3.52`
+- Tag phát hành: `1.0.5` — `implementation("com.github.xtung2404:rogo_sdk_lib:1.0.5")`
 
 ## Lịch sử thay đổi
+
+### 1.0.5 (261119) — so với 1.0.4
+- **Core**: `IotCoreAndroid` 1.0.3.50 → 1.0.3.52 (API public của handler, danh sách class và manifest không đổi so với 1.0.4)
+- **Hành vi**: `RoSDK.connectService` — khi `isAuthenticated = true`, SDK tự kiểm tra phiên bản danh sách product model: lấy phiên bản hiện có,
+  gọi `syncAppInfo` của Core rồi lấy lại để so sánh; giống nhau thì không làm gì, khác nhau thì đồng bộ lại danh sách product model từ cloud
+  (chạy bất đồng bộ, không chặn `onConnectSuccess`). Không thêm hàm công khai nào.
+- **Commit**: `99c9520` `syncDeviceToCloud` xoá thiết bị cũ cùng MAC trong local DB trước khi lưu (thay đổi này đã có trong bản 1.0.4 dưới dạng chưa commit)
 
 ### 1.0.4 (261118) — so với 1.0.3
 - **Core**: `IotCoreAndroid` 1.0.3.47 → 1.0.3.50

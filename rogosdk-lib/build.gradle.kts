@@ -38,7 +38,7 @@ android {
 // Manifest của AAR (permission + RoSdkInitializer) đã được copy sang src/main/AndroidManifest.xml.
 val extractedAarDir = layout.buildDirectory.dir("intermediates/extracted_aar_jar")
 val extractAarJarTask = tasks.register<Copy>("extractAarJar") {
-    val aarFile = file("libs/raio-android-sdk-261118-release.aar")
+    val aarFile = file("libs/raio-android-sdk-261119-release.aar")
     if (aarFile.exists()) {
         from(zipTree(aarFile))
         include("classes.jar")
